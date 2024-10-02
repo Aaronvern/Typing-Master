@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Master</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+            background: #121716;
+        }
+
+        /* utility classes */
+        .text-pri {
+            color: #1ebd86;
+        }
+
+        .text-sec {
+            color: #fafafa;
+        }
+
+        text-third {
+            color: #ea5d5c;
+        }
+
+        /* TopBar */
+        .topbar {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding-top: 30px;
+        }
+
+        .logo-text {
+            font-size: 1.6rem;
+        }
+
+        .right-topbar {
+            width: 30%;
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        .home-btn {
+            text-decoration: none;
+            color: #1ebd86;
+            background-color: #464c4c;
+            padding: 5px 15px;
+            border-radius: 21px;
+        }
+
+        /* Middle Section */
+        .mid-section {
+            font-size: 35px;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            padding-top: 30px;
+        }
+
+        .timer {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .timer-head {
+            color: #6a7170;
+            font-size: 1.2rem;
+        }
+
+        .timer-count {
+            font-size: 4.5rem;
+            color: #6a7170;
+        }
+
+        .para {
+            width: 75%;
+            text-align: center;
+            color: #646a68;
+        }
+
+        .restart-btn {
+            cursor: pointer;
+            border: none;
+            margin-top: 20px;
+            font-size: 1.4rem;
+            display: flex;
+        }
+
+        .restart-btn img {
+            padding-right: 5px;
+        }
+
+        /* Result Section */
+        .hori-line {
+            height: 2px;
+            width: 75%;
+            background: #464c4c;
+            display: block;
+            margin: auto;
+        }
+
+        .resultSection {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .resultSection p {
+            color: #6a7170;
+        }
+
+        #input-field {
+            opacity: 0;
+            z-index: -999;
+            position: absolute;
+        }
+
+        /* Typing function */
+        #input-feild {
+            outline: none;
+            opacity: 0;
+            width: 1px;
+        }
+
+        .correct {
+            color: #1fe088;
+        }
+
+        .incorrect {
+            color: #ea5d5c;
+        }
+
+        .typing-text p span.active::before {
+            position: absolute;
+            content: "";
+            height: 2px;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            opacity: 0;
+            border-radius: 5px;
+            background: #17A2B8;
+            animation: blink 1s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Topbar -->
+        <div class="topbar">
+            <div class="logo">
+                <p class="text-sec logo-text">Typing Master</p>
+            </div>
+            <div class="right-topbar">
+                <p style="color: #646a68;">Practice Mode</p>
+                <p><a class="home-btn" href="#index.html">Home</a></p>
+            </div>
+        </div>
+        <!-- Middle Section -->
+        <div class="mid-section">
+            <div class="timer">
+                <p class="timer-head">TIMER</p>
+                <p class="timer-count" id="timer">60</p>
+            </div>
+            <input type="text" id="input-field">
+            <div class="para" id="paragraph">
+                <p></p>
+            </div>
+
+            <button onclick="fetchRandom()" id="restartButton" class="restart-btn text-sec"> <img src="icons/arrow.png"
+                    alt=""> Start Over</button>
+        </div>
+
+        <!-- Result Section -->
+        <div class="hori-line"></div>
+        <div class="resultSection">
+            <p>Mistake : <span id="mistake">0</span></p>
+            <p>WPM : <span id="wpm">0</span></p>
+            <p>CPM : <span id="cpm">0</span></p>
+
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
